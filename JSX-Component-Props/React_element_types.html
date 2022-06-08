@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script> 
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Post_Item(){
+            return (
+                <React.Fragment>
+                    <h2 className="post-title">JavaScript ngôn ngữ lập trình đa năng</h2>
+                    <p className="post-desc">Bạn có kiến thức cơ bản về ngôn ngữ lập trình</p>
+                    <p className="post-published">5 giờ trước</p>
+                </React.Fragment>
+            )
+        }
+
+
+        const app = (
+            <div className="post-list">
+                <Post_Item></Post_Item>
+            </div>
+        )
+
+
+        ReactDOM.render(app,document.getElementById('root'))
+    </script>
+</body>
+</html>
