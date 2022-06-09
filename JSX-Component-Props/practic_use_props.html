@@ -277,24 +277,15 @@
             ]
 
             //Component.js
-            function CourseItem({
-                title,
-                image,
-               meta,
-               student_count
-            }){
-                return (
-                    <div className="course-item">
-                        <p className="title">{title}</p>
-                        <img src={image} alt=""/>
-                        <p className="desc">{meta}</p>
-                        <p className="meta">{student_count}</p>
+            const CourseItem = ({course}) => (
+                <div className="course-item">
+                        <p className="title">{course.title}</p>
+                        <img src={course.image_url} alt=""/>
+                        <p className="desc">{course.meta_description}</p>
+                        <p className="meta">{course.reactions_count}</p>
                     </div>
-                    
-                )
-            }
-
-
+            )
+                
 
             //App.js
             function App(){
@@ -302,10 +293,8 @@
                     <div className = "courses">
                         {courses.map(course => 
                             <CourseItem 
-                                title = {course.title}
-                                image = {course.image_url}
-                                meta = {course.meta_description}
-                                student_count = {course.reactions_count}
+                               key = {course.id}
+                               course = {course}
                             />
                         )}
                     </div>
