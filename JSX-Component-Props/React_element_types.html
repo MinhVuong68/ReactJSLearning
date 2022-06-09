@@ -12,25 +12,35 @@
 <body>
     <div id="root"></div>
     <script type="text/babel">
+
         function Post_Item(){
             return (
-                <React.Fragment>
+                <div className="post-item">
                     <h2 className="post-title">JavaScript ngôn ngữ lập trình đa năng</h2>
                     <p className="post-desc">Bạn có kiến thức cơ bản về ngôn ngữ lập trình</p>
                     <p className="post-published">5 giờ trước</p>
-                </React.Fragment>
+                </div>
             )
         }
 
 
-        const app = (
-            <div className="post-list">
-                <Post_Item></Post_Item>
-            </div>
-        )
+        
 
 
-        ReactDOM.render(app,document.getElementById('root'))
+        //App.js
+        function App(){
+            return (
+                <div id="wrapper">
+                    <Post_Item></Post_Item>
+                    <Post_Item></Post_Item>
+                    <Post_Item></Post_Item>
+                </div>
+            )
+        }
+
+
+        //index.js
+        ReactDOM.render(<App />,document.getElementById('root'))
     </script>
 </body>
 </html>
