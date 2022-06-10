@@ -28,9 +28,14 @@
 
         const jsx = (
             <ul>
-                {courses.map(course => <li>{course.name}</li>)}
+                {courses.map((course,index) =>
+                     <li key={index}>
+                        {course.name}
+                    </li>)}
             </ul>
         )
+
+        console.log(jsx)
 
         ReactDOM.render(jsx,document.getElementById('root'))
         

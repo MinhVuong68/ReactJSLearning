@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const courses = [
+            {
+                id: 1,
+                name: "PHP nâng cao",
+                img: "data:image/png;base64,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",
+                desc: "PHP nâng cao danh riêng cho học viên có kiến vững về PHP",
+                price: 200000,
+                numbers: 200
+            },
+            {
+                id: 2,
+                name: "Javascript cơ bản",
+                img: "https://nguyenvanhieu.vn/wp-content/uploads/2018/10/javascript-la-gi.jpg",
+                desc: "Ngôn ngữ lập trình đa năng",
+                price: 150000,
+                numbers: 600
+            },
+            {
+                id: 3,
+                name: "HTML, SCC cơ bản",
+                img: "data:image/png;base64,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",
+                desc: "Ngôn ngữ đánh dấu siêu văn bản",
+                price: 150000,
+                numbers: 900
+            }
+        ]
+
+
+        // Component
+        const CourseItem = ({ course }) => (
+            <div className="course-item">
+                <h2>{course.name }</h2>
+                <img src={course.img } alt=""/>
+                <p>{course.desc }</p>
+                <p>{course.price }</p>
+                <p>{course.numbers }</p>
+            </div>
+        )
+
+
+
+        //App.js
+        const App = () =>(
+            <div className="wrapper">
+                {
+                    courses.map(course => (
+                        <CourseItem 
+                            key = {course.id} 
+                            course = {course}
+                        />
+                    ))
+                }
+            </div>
+        )
+
+
+        //index.js
+        ReactDOM.render(<App />,document.getElementById('root'))
+    </script>
+</body>
+</html>
