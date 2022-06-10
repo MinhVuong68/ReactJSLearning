@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+
+        // Component
+        const Header = ({sum,obj}) => {
+            return (
+                <React.Fragment>
+                    <div>{sum(3,4)}</div>
+                    <div>{obj.a}</div>
+                </React.Fragment>
+                
+                
+            )
+        }
+        
+        const b = { a:1, b:2}
+
+        const sum = (a,b) => a + b
+        const a = sum
+
+
+        const app = (
+            <div className="wrapper">
+                <Header 
+                    sum = {sum}
+                    obj = {b}
+                /> 
+            </div>
+        )
+        console.log(app)
+
+        ReactDOM.render(<app />, document.getElementById('root'))
+
+    </script>
+
+</body>
+</html>
