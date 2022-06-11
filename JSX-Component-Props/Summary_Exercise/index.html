@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            color: #333;
+            font-size: 62.5%;
+            font-family: "Open Sans", sans-serif;
+        }
+        .cart-item {
+            width: 200px;
+            min-height: 50px;
+            display: inline-block;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 2px;
+            margin: 24px;
+            align-self: center;
+            box-shadow: 0 2px 5px 0 rgba(51,62,73,0.1);
+            flex-direction: column;
+        }
+        img {
+            width: 100%;
+            height: 200px;
+        }
+        h3 {
+            font-size: 2.4rem;
+            margin: 10px 0;
+        }
+        .gender,.price {
+            text-align: left;
+            margin-left: 5px;
+            margin-bottom: 10px;
+            font-size: 1.6rem;
+        }
+        button {
+            outline: none;
+            background-color: #FD3D3D;
+            margin-bottom: 12px;
+            padding: 12px 10px;
+            font-weight: 600;
+            color: #fff;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+    </style>
+
+    <script type="text/babel">
+        const products = [
+            {
+                id: 1,
+                img: "./img/dsc06568.jpg",
+                name: "Giày thể thao",
+                gender: "Nam/Nữ",
+                price: 100000
+            },
+            {
+                id: 2,
+                img: "./img/aokhoac.jfif",
+                name: "Áo khoác",
+                gender: "Nữ",
+                price: 90000
+            },
+            {
+                id: 3,
+                img: "./img/aothunnu.jfif",
+                name: "Áo thun",
+                gender: "Nữ",
+                price: 120000
+            },
+            {
+                id: 1,
+                img: "./img/giaydb.jfif",
+                name: "Giày đá bóng",
+                gender: "Nam",
+                price: 100000
+            }
+
+        ]
+
+
+
+        const Button = ({title,href,onClick}) => {
+            let Component = 'button'
+            let props = {}
+            if(href) {
+                Component = 'a'
+                props.href = href
+            }
+            if(onClick){
+                props.onClick = onClick
+            }
+            console.log(props)
+            return (
+                <Component {...props}>{title}</Component>
+            )
+           
+        }
+        const CartItem = ({product}) => {
+            return (
+                <div className="cart-item">
+                    <img src= { product.img } alt=""/> 
+                    
+                    <h3>{ product.name }</h3>
+                    <div><p className="gender">Giói tính: { product.gender }</p></div>
+                    
+                    <div><p className="price">Giá: {product.price}</p></div>
+                    <Button 
+                        title = "Mua ngay"
+                    />
+                </div>
+            )
+        }
+
+
+        const App = () => {
+            return (
+                <div className="wrapper">
+                    {
+                        products.map((product,index) => 
+                            <CartItem 
+                                key = { index }
+                                product = { product }
+                            /> 
+                           
+                        )
+                    }
+                   
+                </div>
+            )
+        }
+        ReactDOM.render(<App/>,document.getElementById('root'))
+    </script>
+</body>
+</html>

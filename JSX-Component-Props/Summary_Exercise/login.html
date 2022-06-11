@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@17.0.0/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <title>Đăng nhập</title>
+</head>
+<body>
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            color: #333;
+            font-size: 62.5%;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        #root {
+            background-color: #f1f1f1;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        .form {
+            width: 360px;
+            min-height: 100px;
+            padding: 32px 24px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 2px;
+            margin: 24px;
+            align-self: center;
+            box-shadow: 0 2px 5px 0 rgba(51,62,73,0.1);
+        }
+        .form .heading {
+            font-size: 2rem;
+        }
+        .form-group {
+            display: flex;
+            margin-top: 21px;
+            flex-direction: column;
+        }
+        label {
+            text-align: left;
+            font-weight: 700;
+            padding-bottom: 6px;
+            line-height: 1.8rem;
+            font-size: 1.4rem;
+        }
+
+        .form-control {
+            height: 40px;
+            padding: 8px 12px;
+            border: 1px solid #b3b3b3;
+            border-radius: 3px;
+            outline: none;
+            font-size: 1.4rem;
+        }
+
+        .form-control:hover {
+            border-color: #FD3D3D;
+        }
+
+        a {
+            text-decoration: none;
+            display: block;
+        }
+        a,button {
+            outline: none;
+            background-color: #FD3D3D;
+            margin-top: 12px;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: #fff;
+            border: none;
+            width: 100%;
+            font-size: 14px;
+            border-radius: 8px;
+            cursor: pointer;
+
+        }
+        input[type="checkbox"]{
+            display: inline;
+        }
+       
+
+
+    </style>
+    
+    
+    <div id="root"></div>
+
+
+
+    <script type="text/babel">
+        
+
+        const Input = ({label,...props}) => {
+            if(props.type == 'checkbox'){
+                return (
+                    <div className="form-group">
+                        <input {...props}/>
+                        <label>{label}</label>
+                    </div>
+                )
+            }
+            return(
+                <div className="form-group">
+                    <label>{label}</label>
+                    <input {...props}/>
+                </div>
+            )
+        }
+
+
+
+        const Button = ({title,href,onClick}) => {
+            let Component = 'button'
+            let props = {}
+            if(href) {
+                Component = 'a'
+                props.href = href
+            }
+            if(onClick){
+                props.onClick = onClick
+            }
+            console.log(props)
+            return (
+                <Component {...props}>{title}</Component>
+            )
+           
+        }
+
+
+        const App = () => {
+            return (
+                <form action="" className="form">
+                    <h1 className= "heading">ĐĂNG NHẬP</h1>
+                    <Input
+                        label = "Tên đăng nhập"
+                        className = "form-control"
+                        type = "text"
+                        placeholder = "Tên đăng nhập tài khoản"
+                    />
+                    <Input
+                        label = "Mật khẩu"
+                        className = "form-control"
+                        type = "password"
+                        placeholder = "Nhập mật khẩu"
+                    />
+                    <Input
+                        label = "Ghi nhớ đăng nhập"
+                        type = "checkbox"
+                    />
+                    <Button
+                        title = "Đăng nhập"
+                        href = "./index.html"
+                        onClick = {() => {alert("Đăng nhập thành công!")}}
+                    />
+                </form>    
+            )
+        }
+
+        ReactDOM.render(<App />,document.getElementById('root'))
+    </script>
+
+</body>
+</html>
